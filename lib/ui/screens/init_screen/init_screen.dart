@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frahto/ui/constants/constants.dart';
+import 'package:frahto/ui/screens/auth_screen/auth_screen.dart';
+import 'package:frahto/ui/widgets/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class InitScreen extends StatelessWidget {
@@ -8,9 +11,6 @@ class InitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mqocsh = MediaQuery.of(context).size.height;
-    var mqocsw = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -27,9 +27,10 @@ class InitScreen extends StatelessWidget {
                       style: Style().textStyle(
                         20,
                         FontWeight.w700,
-                        Style.mainColor,
+                        Style.mainPurple,
                       ),
                     ),
+                    SWidgets().sb(0, 32),
                     Text(
                       'Крупнейший агрегатор перевозчиков',
                       maxLines: 5,
@@ -37,28 +38,14 @@ class InitScreen extends StatelessWidget {
                       style: Style().textStyle(
                         32,
                         FontWeight.w700,
-                        Color(0xff131214),
+                        Style.mainBlack,
                       ),
                     ),
-                    FilledButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Style.mainColor),
-                        fixedSize: MaterialStateProperty.all(
-                            Size.fromWidth(MediaQuery.of(context).size.width)),
-                      ),
-                      onPressed: () {},
-                      child: Container(
-                        child: Text(
-                          'Начать',
-                          maxLines: 5,
-                          style: Style().textStyle(
-                            16,
-                            FontWeight.w500,
-                            Colors.white,
-                          ),
-                        ),
-                      ),
+                    SWidgets().sb(0, 32),
+                    SWidgets().ubutton(
+                      context,
+                      AuthScreen(),
+                      'Продолжить',
                     ),
                   ],
                 ),
