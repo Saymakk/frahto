@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frahto/ui/constants/constants.dart';
+import 'package:frahto/constants/constants.dart';
 import 'package:get/get.dart';
 
-class AppBarOT {
+class AppBars {
   AppBar abot(String title) {
     return AppBar(
       backgroundColor: Colors.white,
@@ -26,10 +26,8 @@ class AppBarOT {
       centerTitle: true,
     );
   }
-}
 
-class AppBarExN {
-  AppBar appBarOt(String title) {
+  AppBar aboa() {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
@@ -58,6 +56,7 @@ class AppBarExN {
   }
 }
 
+
 class SWidgets {
   SizedBox sb(double width, double height) {
     return SizedBox(
@@ -66,18 +65,19 @@ class SWidgets {
     );
   }
 
-  FilledButton ubutton(BuildContext context, Widget where, String text) {
+  FilledButton ubutton(
+      BuildContext context, String where, String text, dynamic arguments) {
     return FilledButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Style.mainPurple),
         fixedSize: MaterialStateProperty.all(
-           Size( MediaQuery.of(context).size.width, 48)),
+            Size(MediaQuery.of(context).size.width, 48)),
       ),
       onPressed: () {
         print("GOING TO ROUTE " + where.toString());
-        Get.to(
-          () => where,
-          transition: Transition.rightToLeft,
+        Get.toNamed(
+          '/$where',
+          arguments: [arguments],
         );
       },
       child: Container(
@@ -93,4 +93,39 @@ class SWidgets {
       ),
     );
   }
+
+  FilledButton inactiveubutton(
+      BuildContext context,  String text) {
+    return FilledButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Style.inactiveGreyBG),
+        fixedSize: MaterialStateProperty.all(
+            Size(MediaQuery.of(context).size.width, 48)),
+      ),
+      onPressed: null,
+      child: Container(
+        child: Text(
+          text,
+          maxLines: 5,
+          style: Style().textStyle(
+            16,
+            FontWeight.w500,
+            Style.inactiveGreyText,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Text textButtonChild( String text){
+    return Text(
+      text,
+      style: Style().textStyle(
+        16,
+        FontWeight.w500,
+        Style.mainPurple,
+      ),
+    );
+  }
+
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frahto/constants/routes.dart';
 import 'package:frahto/ui/screens/init_screen/init_screen.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -15,9 +17,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
+      initialRoute: '/',
+      getPages: Routes.route_list,
       debugShowCheckedModeBanner: false,
-      home: InitScreen(),
+      home: const InitScreen(),
     );
   }
 }

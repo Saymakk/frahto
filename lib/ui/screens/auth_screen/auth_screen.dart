@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:frahto/ui/constants/constants.dart';
 import 'package:frahto/ui/widgets/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+
+import '../../../constants/constants.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _AuthScreenState extends State<AuthScreen> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          appBar: AppBarOT().abot('Авторизация'),
+          appBar: AppBars().abot('Авторизация'),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -53,21 +54,12 @@ class _AuthScreenState extends State<AuthScreen> {
                 phoneField(),
                 SWidgets().sb(0, 16),
                 TextButton(
-                  onPressed: () {
-                    setState(() {
-                      controller.text = '';
-                    });
-                  },
-                  style: Style().tbs(),
-                  child: Text(
-                    'Сбросить номер телефона',
-                    style: Style().textStyle(
-                      16,
-                      FontWeight.w500,
-                      Style.mainPurple,
-                    ),
-                  ),
-                ),
+                    onPressed: () {
+                      _clear();
+                    },
+                    style: Style().tbs(),
+                    child:
+                        SWidgets().textButtonChild('Сбросить номер телефона')),
                 SWidgets().sb(0, 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -84,27 +76,26 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
-                      style: Style().tbs(),
-                      child: Text(
-                        'Зарегистрироваться',
-                        style: Style().textStyle(
-                          16,
-                          FontWeight.w400,
-                          Style.mainPurple,
-                        ),
-                      ),
-                    ),
+                        onPressed: () {},
+                        style: Style().tbs(),
+                        child:
+                            SWidgets().textButtonChild('Зарегистрироваться')),
                   ],
                 ),
                 Expanded(child: SizedBox()),
-                SWidgets().ubutton(context, AuthScreen(), 'Продолжить'),
+                SWidgets().ubutton(context, 'sms', 'Продолжить', 'auth'),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void _clear() {
+    setState(() {
+      controller.text = '';
+    });
   }
 
   Widget phoneField() {
@@ -121,13 +112,14 @@ class _AuthScreenState extends State<AuthScreen> {
             //   print(value);
             // },
             selectorConfig: SelectorConfig(
-                trailingSpace: false,
-                selectorType: PhoneInputSelectorType.DIALOG,
-                setSelectorButtonAsPrefixIcon: true,
-                leadingPadding: 16),
+              trailingSpace: false,
+              selectorType: PhoneInputSelectorType.DIALOG,
+              setSelectorButtonAsPrefixIcon: true,
+              leadingPadding: 16,
+            ),
             initialValue: number,
             textFieldController: controller,
-            // formatInput: true,
+            formatInput: true,
             hintText: 'Номер телефона',
             keyboardType: TextInputType.number,
             inputBorder: OutlineInputBorder(

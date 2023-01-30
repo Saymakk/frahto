@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:frahto/ui/constants/constants.dart';
+import 'package:frahto/constants/constants.dart';
 import 'package:frahto/ui/screens/auth_screen/auth_screen.dart';
 import 'package:frahto/ui/widgets/widgets.dart';
 import 'package:get/get.dart';
@@ -47,8 +47,8 @@ class InitScreen extends StatelessWidget {
                       SWidgets().sb(0, 32),
                       SWidgets().ubutton(
                         context,
-                        AuthScreen(),
-                        'Продолжить',
+                        'auth',
+                        'Продолжить', null
                       ),
                     ],
                   ),
