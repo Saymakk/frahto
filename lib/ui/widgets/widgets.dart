@@ -74,7 +74,6 @@ class SWidgets {
             Size(MediaQuery.of(context).size.width, 48)),
       ),
       onPressed: () {
-        print("GOING TO ROUTE " + where.toString());
         Get.toNamed(
           '/$where',
           arguments: [arguments],
