@@ -45,20 +45,17 @@ class InitScreen extends StatelessWidget {
                         ),
                       ),
                       SWidgets().sb(0, 32),
-                      SWidgets().ubutton(
-                        context,
-                        'auth',
-                        'Продолжить', null
-                      ),
+                      SWidgets().ubutton(context, 'auth', 'Продолжить', null),
                     ],
                   ),
                 ),
               ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Image.asset(Assets.img + 'init_screen_image_png.png'),
-                ),
+              Expanded(child: SizedBox()),
+              Image.asset(
+                Assets.img + 'init_screen_image_png.png',
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .5,
+                fit: BoxFit.fill,
               ),
             ],
           ),
