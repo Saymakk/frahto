@@ -24,8 +24,8 @@ class _AuthScreenState extends State<AuthScreen> {
       color: Colors.white,
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-
-        child: Scaffold( resizeToAvoidBottomInset: false,
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: AppBarOT().abot('Авторизация'),
           body: Padding(
             padding: const EdgeInsets.all(16),
@@ -117,9 +117,9 @@ class _AuthScreenState extends State<AuthScreen> {
             onInputChanged: (PhoneNumber number) {
               print(number.phoneNumber);
             },
-            onInputValidated: (bool value) {
-              print(value);
-            },
+            // onInputValidated: (bool value) {
+            //   print(value);
+            // },
             selectorConfig: SelectorConfig(
                 trailingSpace: false,
                 selectorType: PhoneInputSelectorType.DIALOG,
