@@ -11,53 +11,57 @@ class InitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.all(24),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'FRAHTO',
-                      maxLines: 5,
-                      style: Style().textStyle(
-                        20,
-                        FontWeight.w700,
-                        Style.mainPurple,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: SafeArea(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(24),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'FRAHTO',
+                        maxLines: 5,
+                        style: Style().textStyle(
+                          20,
+                          FontWeight.w700,
+                          Style.mainPurple,
+                        ),
                       ),
-                    ),
-                    SWidgets().sb(0, 32),
-                    Text(
-                      'Крупнейший агрегатор перевозчиков',
-                      maxLines: 5,
-                      textAlign: TextAlign.center,
-                      style: Style().textStyle(
-                        32,
-                        FontWeight.w700,
-                        Style.mainBlack,
+                      SWidgets().sb(0, 32),
+                      Text(
+                        'Крупнейший агрегатор перевозчиков',
+                        maxLines: 5,
+                        textAlign: TextAlign.center,
+                        style: Style().textStyle(
+                          32,
+                          FontWeight.w700,
+                          Style.mainBlack,
+                        ),
                       ),
-                    ),
-                    SWidgets().sb(0, 32),
-                    SWidgets().ubutton(
-                      context,
-                      AuthScreen(),
-                      'Продолжить',
-                    ),
-                  ],
+                      SWidgets().sb(0, 32),
+                      SWidgets().ubutton(
+                        context,
+                        AuthScreen(),
+                        'Продолжить',
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Image.asset(Assets.img + 'init_screen_image_png.png'),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(Assets.img + 'init_screen_image_png.png'),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

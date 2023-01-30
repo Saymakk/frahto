@@ -22,81 +22,85 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Scaffold(
-        appBar: AppBarOT().abot('Авторизация'),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Добро пожаловать',
-                style: Style().textStyle(
-                  32,
-                  FontWeight.w700,
-                  Style.mainBlack,
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+
+        child: Scaffold( resizeToAvoidBottomInset: false,
+          appBar: AppBarOT().abot('Авторизация'),
+          body: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Добро пожаловать',
+                  style: Style().textStyle(
+                    32,
+                    FontWeight.w700,
+                    Style.mainBlack,
+                  ),
                 ),
-              ),
-              SWidgets().sb(0, 8),
-              Text(
-                'Введите Ваш номер телефона',
-                style: Style().textStyle(
-                  16,
-                  FontWeight.w400,
-                  Style.mainBlack,
-                ),
-              ),
-              SWidgets().sb(0, 28),
-              phoneField(),
-              SWidgets().sb(0, 16),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    controller.text = '';
-                  });
-                },
-                style: Style().tbs(),
-                child: Text(
-                  'Сбросить номер телефона',
+                SWidgets().sb(0, 8),
+                Text(
+                  'Введите Ваш номер телефона',
                   style: Style().textStyle(
                     16,
-                    FontWeight.w500,
-                    Style.mainPurple,
+                    FontWeight.w400,
+                    Style.mainBlack,
                   ),
                 ),
-              ),
-              SWidgets().sb(0, 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Нет аккаунта? ',
-                      style: Style().textStyle(
-                        16,
-                        FontWeight.w400,
-                        Style.mainBlack,
-                      ),
+                SWidgets().sb(0, 28),
+                phoneField(),
+                SWidgets().sb(0, 16),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      controller.text = '';
+                    });
+                  },
+                  style: Style().tbs(),
+                  child: Text(
+                    'Сбросить номер телефона',
+                    style: Style().textStyle(
+                      16,
+                      FontWeight.w500,
+                      Style.mainPurple,
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    style: Style().tbs(),
-                    child: Text(
-                      'Зарегистрироваться',
-                      style: Style().textStyle(
-                        16,
-                        FontWeight.w400,
-                        Style.mainPurple,
+                ),
+                SWidgets().sb(0, 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Нет аккаунта? ',
+                        style: Style().textStyle(
+                          16,
+                          FontWeight.w400,
+                          Style.mainBlack,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Expanded(child: SizedBox()),
-              SWidgets().ubutton(context, AuthScreen(), 'Продолжить'),
-            ],
+                    TextButton(
+                      onPressed: () {},
+                      style: Style().tbs(),
+                      child: Text(
+                        'Зарегистрироваться',
+                        style: Style().textStyle(
+                          16,
+                          FontWeight.w400,
+                          Style.mainPurple,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(child: SizedBox()),
+                SWidgets().ubutton(context, AuthScreen(), 'Продолжить'),
+              ],
+            ),
           ),
         ),
       ),
