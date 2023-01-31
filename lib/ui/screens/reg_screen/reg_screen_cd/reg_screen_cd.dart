@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:frahto/constants/constants.dart';
+import 'package:frahto/ui/widgets/phone_field.dart';
 import 'package:frahto/ui/widgets/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-import '../../../constants/constants.dart';
-import '../../widgets/phone_field.dart';
-
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+class RegCompanyData extends StatefulWidget {
+  const RegCompanyData({Key? key}) : super(key: key);
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  State<RegCompanyData> createState() => _RegCompanyDataState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _RegCompanyDataState extends State<RegCompanyData> {
+  TextEditingController _binController = TextEditingController();
+  TextEditingController _companyNameController = TextEditingController();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final TextEditingController controller = TextEditingController();
@@ -23,19 +25,18 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          appBar: AppBars().abot(true,'Авторизация'),
+          appBar: AppBars().abot(true, 'Регистрация'),
           body: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Добро пожаловать',
+                  'Данные компании',
                   style: Style().textStyle(
                     32,
                     FontWeight.w700,
@@ -44,64 +45,47 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
                 SWidgets().sb(0, 8),
                 Text(
-                  'Введите Ваш номер телефона',
+                  'Для регистрации заполните данные компании, а также данные авторизации',
                   style: Style().textStyle(
                     16,
                     FontWeight.w400,
                     Style.mainBlack,
                   ),
+                  maxLines: 5,
                 ),
-                SWidgets().sb(0, 28),
+                SWidgets().inputField('БИН', _binController, '************'),
+                SWidgets().inputField('Название компании',
+                    _companyNameController, 'ТОО "Double.kz"'),
                 phone_field(),
                 SWidgets().sb(0, 16),
-                TextButton(
-                  onPressed: () {
-                    _clear();
-                  },
-                  style: Style().tbs(),
-                  child: SWidgets().textButtonChild('Сбросить номер телефона'),
-                ),
-                SWidgets().sb(0, 16),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Text(
-                        'Нет аккаунта? ',
-                        style: Style().textStyle(
-                          16,
-                          FontWeight.w400,
-                          Style.mainBlack,
-                        ),
-                      ),
+                    Text(
+                      'Уже есть аккаунт? ',
+                      style: Style()
+                          .textStyle(16, FontWeight.w400, Style.mainBlack),
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.toNamed(
-                          '/regcd',
-                          arguments: ['reg'],
-                        );
+                        Get.back();
                       },
-                      style: Style().tbs(),
-                      child: SWidgets().textButtonChild('Зарегистрироваться'),
+                      child: Text(
+                        'Войти',
+                        style: Style()
+                            .textStyle(16, FontWeight.w400, Style.mainPurple),
+                      ),
                     ),
                   ],
                 ),
                 Expanded(child: SizedBox()),
-                SWidgets().ubutton(context, 'sms', 'Продолжить', 'auth'),
+                SWidgets().ubutton(context, 'regud', 'Продолжить', null),
+                SWidgets().sb(0, 16),
               ],
             ),
           ),
         ),
       ),
     );
-  }
-
-  void _clear() {
-    setState(() {
-      controller.text = '';
-    });
   }
 
   Widget phone_field() {
@@ -131,7 +115,7 @@ class _AuthScreenState extends State<AuthScreen> {
             keyboardType: TextInputType.number,
             inputBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: Colors.grey)),
+                borderSide: BorderSide(color: Style.inactiveGreyText)),
           ),
         ],
       ),

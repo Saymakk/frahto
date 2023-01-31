@@ -23,83 +23,87 @@ class _SMSScreenState extends State<SMSScreen> {
 
     print(button_title);
     return Container(
-      child: Scaffold(
-        appBar: AppBars().aboa(),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'Подтверждение номера',
-                  textAlign: TextAlign.center,
-                  style:
-                      Style().textStyle(24, FontWeight.w700, Style.mainBlack),
-                ),
-                SWidgets().sb(0, 16),
-                Text(
-                  'SMS с кодом подтверждения был отправлен на указанный номер',
-                  textAlign: TextAlign.center,
-                  maxLines: 4,
-                  style:
-                      Style().textStyle(16, FontWeight.w400, Style.mainBlack),
-                ),
-                Text(
-                  '+7(707) 857 - 76 - 66',
-                  textAlign: TextAlign.center,
-                  style:
-                      Style().textStyle(16, FontWeight.w700, Style.mainBlack),
-                ),
-                SWidgets().sb(0, 32),
-                Pinput(
-                  onCompleted: (pin) {
-                    if (pin.length == 5) {
-                      setState(() {
-                        isActive = !isActive;
-                      });
-
-                    }
-                  },
-                  length: 5,
-                  focusedPinTheme:
-                      Style().unitheme(Style.mainBlack, Style.mainPurple),
-                  defaultPinTheme:
-                      Style().unitheme(Style.mainBlack, Style.inactiveGreyBG),
-                  submittedPinTheme:
-                      Style().unitheme(Style.mainBlack, Style.inactiveGreyBG),
-                ),
-                Expanded(child: SizedBox()),
-                Column(
-                  children: [
-                    Visibility(
-                      visible: !isActive,
-                      child: SWidgets().inactiveubutton(
-                        context,
-                        button_title,
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBars().aboa(),
+          body: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Подтверждение номера',
+                    textAlign: TextAlign.center,
+                    style:
+                        Style().textStyle(24, FontWeight.w700, Style.mainBlack),
+                  ),
+                  SWidgets().sb(0, 16),
+                  Text(
+                    'SMS с кодом подтверждения был отправлен на указанный номер',
+                    textAlign: TextAlign.center,
+                    maxLines: 4,
+                    style:
+                        Style().textStyle(16, FontWeight.w400, Style.mainBlack),
+                  ),
+                  Text(
+                    '+7(707) 857 - 76 - 66',
+                    textAlign: TextAlign.center,
+                    style:
+                        Style().textStyle(16, FontWeight.w700, Style.mainBlack),
+                  ),
+                  SWidgets().sb(0, 32),
+                  Pinput(
+                    onCompleted: (pin) {
+                      if (pin.length == 5) {
+                        setState(() {
+                          isActive = !isActive;
+                        });
+                      }
+                    },
+                    length: 5,
+                    focusedPinTheme:
+                        Style().unitheme(Style.mainBlack, Style.mainPurple),
+                    defaultPinTheme:
+                        Style().unitheme(Style.mainBlack, Style.inactiveGreyBG),
+                    submittedPinTheme:
+                        Style().unitheme(Style.mainBlack, Style.inactiveGreyBG),
+                  ),
+                  Expanded(child: SizedBox()),
+                  Column(
+                    children: [
+                      Visibility(
+                        visible: !isActive,
+                        child: SWidgets().inactiveubutton(
+                          context,
+                          button_title,
+                        ),
                       ),
-                    ),
-                    Visibility(
-                      visible: isActive,
-                      child: SWidgets().ubutton(
-                        context,
-                        'sms',
-                        button_title,
-                        null,
+                      Visibility(
+                        visible: isActive,
+                        child: SWidgets().ubutton(
+                          context,
+                          'navbar',
+                          button_title,
+                          null,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                SWidgets().sb(0, 16),
-                TextButton(
+                    ],
+                  ),
+                  SWidgets().sb(0, 16),
+                  TextButton(
                     onPressed: () {},
                     child: Text(
                       'Отправить заново',
                       style: Style()
                           .textStyle(16, FontWeight.w500, Style.mainPurple),
-                    )),
-              ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

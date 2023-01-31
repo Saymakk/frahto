@@ -3,13 +3,15 @@ import 'package:frahto/constants/constants.dart';
 import 'package:get/get.dart';
 
 class AppBars {
-  AppBar abot(String title) {
+  AppBar abot(bool back, String title) {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
       shadowColor: Colors.transparent,
       leading: IconButton(
-        onPressed: () => Get.back(),
+        onPressed: () {
+          back == true ? Get.back() : Get.offAndToNamed('/');
+        },
         icon: Icon(
           Icons.arrow_back_ios,
           color: Style.mainBlack,
@@ -56,7 +58,6 @@ class AppBars {
   }
 }
 
-
 class SWidgets {
   SizedBox sb(double width, double height) {
     return SizedBox(
@@ -93,8 +94,7 @@ class SWidgets {
     );
   }
 
-  FilledButton inactiveubutton(
-      BuildContext context,  String text) {
+  FilledButton inactiveubutton(BuildContext context, String text) {
     return FilledButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Style.inactiveGreyBG),
@@ -116,7 +116,7 @@ class SWidgets {
     );
   }
 
-  Text textButtonChild( String text){
+  Text textButtonChild(String text) {
     return Text(
       text,
       style: Style().textStyle(
@@ -127,4 +127,50 @@ class SWidgets {
     );
   }
 
+  Widget inputField(
+      String title, TextEditingController controller, String hint) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SWidgets().sb(0, 16),
+        Text(
+          title,
+          style: Style().textStyle(
+            16,
+            FontWeight.w500,
+            Style.mainBlack,
+          ),
+        ),
+        SWidgets().sb(0, 12),
+        TextFormField(
+          controller: controller,
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle:
+                Style().textStyle(16, FontWeight.w400, Style.inactiveGreyBG),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(width: 1, color: Style.inactiveGreyBG),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(width: 1, color: Style.inactiveGreyBG),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(width: 1, color: Style.inactiveGreyBG),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            focusColor: Style.inactiveGreyBG,
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: Style.inactiveGreyBG,
+              ),
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        ),
+        SWidgets().sb(0, 16),
+      ],
+    );
+  }
 }
