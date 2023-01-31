@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: '/',
+      initialRoute: '/navbar',
       getPages: Routes.route_list,
       debugShowCheckedModeBanner: false,
       home: const InitScreen(),

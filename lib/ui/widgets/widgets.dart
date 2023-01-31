@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frahto/constants/constants.dart';
+import 'package:frahto/ui/widgets/bottom_nav_bar.dart';
 import 'package:get/get.dart';
 
 class AppBars {
@@ -56,6 +57,25 @@ class AppBars {
       ],
     );
   }
+
+  AppBar aborders() {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      leading: IconButton(
+        onPressed: () => Get.back(),
+        icon: Icon(
+          Icons.arrow_back_ios,
+          color: Style.mainBlack,
+        ),
+      ),
+      bottom: PreferredSize(
+        preferredSize: Size(double.infinity, 20),
+        child: Text('Место для прогресс бара'),
+      ),
+    );
+  }
 }
 
 class SWidgets {
@@ -66,8 +86,8 @@ class SWidgets {
     );
   }
 
-  FilledButton ubutton(
-      BuildContext context, String where, String button_title, dynamic arguments) {
+  FilledButton ubutton(BuildContext context, String where, String button_title,
+      dynamic arguments) {
     return FilledButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Style.mainPurple),
@@ -75,10 +95,12 @@ class SWidgets {
             Size(MediaQuery.of(context).size.width, 48)),
       ),
       onPressed: () {
-        Get.toNamed(
-          '/$where',
-          arguments: [arguments],
-        );
+        arguments == 'navbar'
+            ? Get.offAllNamed('/navbar')
+            : Get.toNamed(
+                '/$where',
+                arguments: [arguments],
+              );
       },
       child: Container(
         child: Text(

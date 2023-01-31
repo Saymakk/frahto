@@ -1,5 +1,6 @@
 import 'package:frahto/ui/screens/auth_screen/auth_screen.dart';
 import 'package:frahto/ui/screens/init_screen/init_screen.dart';
+import 'package:frahto/ui/widgets/bottom_nav_bar.dart';
 import 'package:get/get.dart';
 
 import '../ui/screens/reg_screen/reg_screen_cd/reg_screen_cd.dart';
@@ -27,6 +28,10 @@ class Routes {
     GetPage(
         name: '/regud',
         page: () => const RegUserData(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: '/navbar',
+        page: () => const BottomNavBar(),
         transition: Transition.rightToLeft),
   ];
 }

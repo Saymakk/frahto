@@ -88,7 +88,7 @@ class _SMSScreenState extends State<SMSScreen> {
                           context,
                           'navbar',
                           button_title,
-                          null,
+                          'navbar',
                         ),
                       ),
                     ],
