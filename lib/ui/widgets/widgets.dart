@@ -67,7 +67,7 @@ class SWidgets {
   }
 
   FilledButton ubutton(
-      BuildContext context, String where, String text, dynamic arguments) {
+      BuildContext context, String where, String button_title, dynamic arguments) {
     return FilledButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Style.mainPurple),
@@ -82,7 +82,7 @@ class SWidgets {
       },
       child: Container(
         child: Text(
-          text,
+          button_title,
           maxLines: 5,
           style: Style().textStyle(
             16,
