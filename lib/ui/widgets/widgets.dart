@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:frahto/constants/constants.dart';
 import 'package:frahto/ui/widgets/bottom_nav_bar.dart';
@@ -58,7 +59,7 @@ class AppBars {
     );
   }
 
-  AppBar aborders() {
+  AppBar aborders(percent) {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
@@ -72,7 +73,14 @@ class AppBars {
       ),
       bottom: PreferredSize(
         preferredSize: Size(double.infinity, 20),
-        child: Text('Место для прогресс бара'),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: LinearProgressIndicator(
+            value: percent,
+            color: Style.mainPurple,
+            backgroundColor: Style.inactiveGreyBG,
+          ),
+        ),
       ),
     );
   }
@@ -83,6 +91,105 @@ class SWidgets {
     return SizedBox(
       width: width,
       height: height,
+    );
+  }
+
+  Widget ocreate() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Создание заказа',
+          style: Style().textStyle(
+            32,
+            FontWeight.w700,
+            Style.mainBlack,
+          ),
+        ),
+        SizedBox(height: 8),
+        Text(
+          'Параметры погрузки',
+          style: Style().textStyle(
+            16,
+            FontWeight.w400,
+            Style.inactiveGreyText,
+          ),
+        ),
+        SizedBox(height: 16),
+      ],
+    );
+  }
+
+  Widget dropDownList(
+      String title, final List<String> items, String? selectedValue, final List addedList) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: Style().textStyle(
+            16,
+            FontWeight.w500,
+            Style.mainBlack,
+          ),
+        ),
+        SizedBox(height: 12),
+        DropdownButtonFormField2(
+          decoration: InputDecoration(
+            isDense: true,
+            contentPadding: EdgeInsets.zero,
+            border: OutlineInputBorder(borderSide: BorderSide(
+                width: 1,
+                color: Style.inactiveGreyBG),
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          isExpanded: true,
+          hint: const Text(
+            'Не выбрано',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: Style.mainBlack,
+            ),
+          ),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: Colors.black45,
+          ),
+          iconSize: 30,
+          buttonHeight: 60,
+          buttonPadding: const EdgeInsets.only(left: 16, right: 16),
+          dropdownDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          items: items
+              .map((item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(
+                      item,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Style.mainBlack,
+                      ),
+                    ),
+                  ))
+              .toList(),
+          validator: (value) {
+            if (value == null) {
+              return 'Пожалуйста, выберите нужный пункт.';
+            }
+          },
+          onChanged: (value) {
+            selectedValue = value.toString();
+          },
+          onSaved: (value) {
+            selectedValue = value.toString();
+          },
+        ),
+        SizedBox(height: 16),
+        Divider(),
+      ],
     );
   }
 

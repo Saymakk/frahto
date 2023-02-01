@@ -40,6 +40,36 @@ class Style {
       ),
     );
   }
+
+  InputDecoration textFieldDecoration(){
+    return InputDecoration(
+      hintStyle: Style().textStyle(
+          16, FontWeight.w400, Style.inactiveGreyBG),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(
+            width: 1, color: Style.inactiveGreyBG),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+            width: 1, color: Style.inactiveGreyBG),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+            width: 1, color: Style.inactiveGreyBG),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      focusColor: Style.inactiveGreyBG,
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: Style.inactiveGreyBG,
+        ),
+        borderRadius: BorderRadius.circular(8),
+      ),
+    );
+  }
+
 }
 
 ///ASSETS
