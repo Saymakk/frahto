@@ -15,7 +15,7 @@ class _ORSSevenState extends State<ORSSeven> {
   @override
   Widget build(BuildContext context) {
     var percent = 1.0;
-    TextEditingController addressController = TextEditingController();
+    TextEditingController priceController = TextEditingController();
     String? dropdownValue = 'Не выбрано';
     String? paymentType;
     String? moneyType;
@@ -49,7 +49,7 @@ class _ORSSevenState extends State<ORSSeven> {
                 SWidgets().ocreate(),
                 SWidgets().dropDownList('Условия оплаты', pt, paymentType, []),
                 SWidgets().dropDownList('Валюта', mt, moneyType, []),
-                SWidgets().inputField('Цена', addressController, ''),
+                SWidgets().inputField('Цена', priceController, ''),
                 Divider(),
                 SizedBox(height: 16),
                 SWidgets().dropDownList(
