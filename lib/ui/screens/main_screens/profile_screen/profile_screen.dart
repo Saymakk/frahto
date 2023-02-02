@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frahto/constants/constants.dart';
@@ -67,26 +69,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
               'note',
             ),
             SWidgets().listTileWidget(
-              'currentorder',
+              'orders',
               'currentorder',
               'Текущие заказы',
               'note',
             ),
             SWidgets().listTileWidget(
-              'orderhistory',
+              'orders',
               'orderhistory',
               'История заказов',
               'note',
             ),
-        
             SWidgets().listTileWidget(
               'messages',
               'messages',
               'Сообщения',
               'note',
             ),
-            SWidgets()
-                .listTileWidget('exit', 'exit', 'Выйти из аккаунта', 'note'),
+            SWidgets().listTileWidget(
+              'exit',
+              'exit',
+              'Выйти из аккаунта',
+              'note',
+            ),
           ],
         ),
       ),

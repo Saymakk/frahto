@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frahto/constants/constants.dart';
 import 'package:frahto/ui/screens/main_screens/main_screen/main_screen.dart';
 import 'package:frahto/ui/screens/main_screens/notifications_screen/notifications_screen.dart';
-import 'package:frahto/ui/screens/main_screens/orders_screen/orders_screen.dart';
+import 'package:frahto/ui/screens/main_screens/profile_screen/orders/orders_screen.dart';
 import 'package:frahto/ui/screens/main_screens/profile_screen/profile_screen.dart';
 import 'package:frahto/ui/widgets/widgets.dart';
 

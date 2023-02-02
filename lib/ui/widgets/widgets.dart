@@ -38,7 +38,10 @@ class AppBars {
       backgroundColor: Colors.transparent,
       elevation: 0,
       shadowColor: Colors.transparent,
-      leading: null,
+      leading: Visibility(
+        visible: false,
+        child: Icon(Icons.arrow_back_ios),
+      ),
     );
   }
 
@@ -104,11 +107,12 @@ class SWidgets {
       height: height,
     );
   }
-  SvgPicture svg(String picture, dynamic color){
-  return SvgPicture.asset(
-    '${Assets.icn}$picture.svg',
-    color: color,
-  );
+
+  SvgPicture svg(String picture, dynamic color) {
+    return SvgPicture.asset(
+      '${Assets.icn}$picture.svg',
+      color: color,
+    );
   }
 
   ListTile listTileWidget(
@@ -117,7 +121,7 @@ class SWidgets {
       onTap: () {
         Get.toNamed('/$where');
       },
-      leading:  SvgPicture.asset(Assets.icn + '$icon_leading.svg'),
+      leading: SvgPicture.asset(Assets.icn + '$icon_leading.svg'),
       title: Text(title),
       trailing: Icon(Icons.arrow_forward_ios),
     );

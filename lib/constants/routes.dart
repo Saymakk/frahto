@@ -12,6 +12,8 @@ import '../ui/screens/main_screens/main_screen/order_create_screens/order_create
 import '../ui/screens/main_screens/main_screen/order_create_screens/order_create_screen_six/order_create_screen_six.dart';
 import '../ui/screens/main_screens/main_screen/order_create_screens/order_create_screen_three/order_create_screen_three.dart';
 import '../ui/screens/main_screens/main_screen/order_create_screens/order_create_screen_two/order_create_screen_two.dart';
+import '../ui/screens/main_screens/profile_screen/orders/orders_screen.dart';
+import '../ui/screens/main_screens/profile_screen/requisites_screen/requisites_screen.dart';
 import '../ui/screens/reg_screen/reg_screen_cd/reg_screen_cd.dart';
 import '../ui/screens/reg_screen/reg_screen_ud/reg_screen_ud.dart';
 import '../ui/screens/sms_screen/sms_screen.dart';
@@ -77,6 +79,14 @@ class Routes {
     GetPage(
         name: '/status',
         page: () => const StatusScreen(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: '/requisites',
+        page: () => const RequisitesScreen(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: '/orders',
+        page: () => const OrdersScreen(),
         transition: Transition.rightToLeft),
   ];
 }
