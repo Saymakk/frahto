@@ -117,8 +117,9 @@ class _StatusScreenState extends State<StatusScreen> {
               SizedBox(
                 height: 32,
               ),
-              SWidgets().navbarbutton(
-                  context, 'status', 'Подписать, используя ЭЦП', 'navbar')
+              ///Вернуть позже
+              // SWidgets().navbarbutton(
+              //     context, 'status', 'Подписать, используя ЭЦП', 'navbar')
             ],
           ),
         ),

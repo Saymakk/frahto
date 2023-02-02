@@ -94,14 +94,15 @@ class _SMSScreenState extends State<SMSScreen> {
                     ],
                   ),
                   SWidgets().sb(0, 16),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Отправить заново',
-                      style: Style()
-                          .textStyle(16, FontWeight.w500, Style.mainPurple),
-                    ),
-                  ),
+                  ///Вернуть позже
+                  // TextButton(
+                  //   onPressed: () {},
+                  //   child: Text(
+                  //     'Отправить заново',
+                  //     style: Style()
+                  //         .textStyle(16, FontWeight.w500, Style.mainPurple),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
