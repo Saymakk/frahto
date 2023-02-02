@@ -9,54 +9,55 @@ class ORSFive extends StatefulWidget {
 }
 
 class _ORSFiveState extends State<ORSFive> {
+  TextEditingController addressController = TextEditingController();
+  var percent = .69;
+  String? natureOfCargo = 'Не выбрано';
+  String? natureOfCargoByProps = 'Не выбрано';
+  String? packingType = 'Не выбрано';
+  String? dimW = 'Не выбрано';
+  String? dimH = 'Не выбрано';
+  String? dimL = 'Не выбрано';
+  String? unloadingType = 'Не выбрано';
+  String? uploadingType = 'Не выбрано';
+  String? loadingCond = 'Не выбрано';
+  String? selectedCountry;
+
+  final List<String> noc = [
+    'Стекло',
+  ];
+
+  final List<String> nocbp = [
+    'Хрупкий',
+  ];
+  final List<String> pt = [
+    'Целлофан',
+  ];
+  final List<String> dw = [
+    '120',
+  ];
+
+  final List<String> dh = [
+    '210',
+  ];
+
+  final List<String> dl = [
+    '102',
+  ];
+
+  final List<String> unt = [
+    'Задний',
+  ];
+
+  final List<String> upt = [
+    'Сбоку',
+  ];
+
+  final List<String> lc = [
+    'Спереди',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    var percent = .69;
-    TextEditingController addressController = TextEditingController();
-    String? natureOfCargo = 'Не выбрано';
-    String? natureOfCargoByProps = 'Не выбрано';
-    String? packingType = 'Не выбрано';
-    String? dimW = 'Не выбрано';
-    String? dimH = 'Не выбрано';
-    String? dimL = 'Не выбрано';
-    String? unloadingType = 'Не выбрано';
-    String? uploadingType = 'Не выбрано';
-    String? loadingCond = 'Не выбрано';
-    String? selectedCountry;
-
-    final List<String> noc = [
-      'Стекло',
-    ];
-
-    final List<String> nocbp = [
-      'Хрупкий',
-    ];
-    final List<String> pt = [
-      'Целлофан',
-    ];
-    final List<String> dw = [
-      '120',
-    ];
-
-    final List<String> dh = [
-      '210',
-    ];
-
-    final List<String> dl = [
-      '102',
-    ];
-
-    final List<String> unt = [
-      'Задний',
-    ];
-
-    final List<String> upt = [
-      'Сбоку',
-    ];
-
-    final List<String> lc = [
-      'Спереди',
-    ];
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),

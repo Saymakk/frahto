@@ -12,28 +12,29 @@ class ORSSeven extends StatefulWidget {
 }
 
 class _ORSSevenState extends State<ORSSeven> {
+  var percent = 1.0;
+  TextEditingController _priceController = TextEditingController();
+  String? dropdownValue = 'Не выбрано';
+  String? paymentType;
+  String? moneyType;
+  String? addedServices;
+  final List<String> pt = [
+    'Предоплата',
+    'Постоплата',
+  ];
+  final List<String> mt = [
+    'Тенге',
+    'Доллар',
+  ];
+  final List<String> as = [
+    'Доп1',
+    'Доп2',
+    'Доп3',
+  ];
+  bool value = true;
   @override
   Widget build(BuildContext context) {
-    var percent = 1.0;
-    TextEditingController priceController = TextEditingController();
-    String? dropdownValue = 'Не выбрано';
-    String? paymentType;
-    String? moneyType;
-    String? addedServices;
-    final List<String> pt = [
-      'Предоплата',
-      'Постоплата',
-    ];
-    final List<String> mt = [
-      'Тенге',
-      'Доллар',
-    ];
-    final List<String> as = [
-      'Доп1',
-      'Доп2',
-      'Доп3',
-    ];
-    bool value = true;
+
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -49,7 +50,7 @@ class _ORSSevenState extends State<ORSSeven> {
                 SWidgets().ocreate(),
                 SWidgets().dropDownList('Условия оплаты', pt, paymentType, []),
                 SWidgets().dropDownList('Валюта', mt, moneyType, []),
-                SWidgets().inputField('Цена', priceController, ''),
+                SWidgets().inputField(context, 'Цена', _priceController, '', 'number'),
                 Divider(),
                 SizedBox(height: 16),
                 SWidgets().dropDownList(

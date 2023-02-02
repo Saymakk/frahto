@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:frahto/constants/constants.dart';
 import 'package:frahto/ui/widgets/bottom_nav_bar.dart';
 import 'package:get/get.dart';
@@ -29,6 +30,15 @@ class AppBars {
         ),
       ),
       centerTitle: true,
+    );
+  }
+
+  AppBar abempty() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      leading: null,
     );
   }
 
@@ -92,6 +102,24 @@ class SWidgets {
     return SizedBox(
       width: width,
       height: height,
+    );
+  }
+  SvgPicture svg(String picture, dynamic color){
+  return SvgPicture.asset(
+    '${Assets.icn}$picture.svg',
+    color: color,
+  );
+  }
+
+  ListTile listTileWidget(
+      String where, String icon_leading, String title, String note) {
+    return ListTile(
+      onTap: () {
+        Get.toNamed('/$where');
+      },
+      leading:  SvgPicture.asset(Assets.icn + '$icon_leading.svg'),
+      title: Text(title),
+      trailing: Icon(Icons.arrow_forward_ios),
     );
   }
 
@@ -211,8 +239,10 @@ class SWidgets {
                 '/$where',
                 arguments: [arguments],
               );
-        arguments == 'download' ? showToast('Файл скачивается', position: ToastPosition(align: Alignment.bottomCenter))
-        : null;
+        arguments == 'download'
+            ? showToast('Файл скачивается',
+                position: ToastPosition(align: Alignment.bottomCenter))
+            : null;
       },
       child: Container(
         child: Text(
@@ -261,8 +291,8 @@ class SWidgets {
     );
   }
 
-  Widget inputField(
-      String title, TextEditingController controller, String hint) {
+  Widget inputField(BuildContext context, String title,
+      TextEditingController controller, String hint, String keyboardtype) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -277,7 +307,13 @@ class SWidgets {
         ),
         SWidgets().sb(0, 12),
         TextFormField(
+          keyboardType: keyboardtype == 'number'
+              ? TextInputType.number
+              : TextInputType.text,
           controller: controller,
+          onChanged: (value) {
+            print(value);
+          },
           decoration: InputDecoration(
             hintText: hint,
             hintStyle:

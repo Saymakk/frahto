@@ -47,9 +47,9 @@ class _RegUserDataState extends State<RegUserData> {
                     ),
                   ],
                 ),
-                SWidgets().inputField('ИИН', _iinController, '************'),
-                SWidgets().inputField('Имя', _nameController, 'Имя'),
-                SWidgets().inputField('Фамилия', _lastnameController, 'Фамилия'),
+                SWidgets().inputField(context, 'ИИН', _iinController, '************', ''),
+                SWidgets().inputField(context, 'Имя', _nameController, 'Имя', ''),
+                SWidgets().inputField(context, 'Фамилия', _lastnameController, 'Фамилия', ''),
                 phone_field(),
                 Row(
                   children: [

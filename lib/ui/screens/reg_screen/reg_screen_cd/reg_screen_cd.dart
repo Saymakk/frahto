@@ -53,9 +53,9 @@ class _RegCompanyDataState extends State<RegCompanyData> {
                   ),
                   maxLines: 5,
                 ),
-                SWidgets().inputField('БИН', _binController, '************'),
-                SWidgets().inputField('Название компании',
-                    _companyNameController, 'ТОО "Double.kz"'),
+                SWidgets().inputField(context, 'БИН', _binController, '************', ''),
+                SWidgets().inputField(context, 'Название компании',
+                    _companyNameController, 'ТОО "Double.kz"', ''),
                 phone_field(),
                 SWidgets().sb(0, 16),
                 Row(

@@ -11,39 +11,40 @@ class ORSOne extends StatefulWidget {
 }
 
 class _ORSOneState extends State<ORSOne> {
+  TextEditingController _addressController = TextEditingController();
+  var percent = .15;
+  String? dropdownValue = 'Не выбрано';
+  String? selectedCountry;
+  final List<String> countries = [
+    'Казахстан',
+    'Кыргызстан',
+    'Узбекистан',
+  ];
+
+  final List<String> cities_kz = [
+    'Алматы',
+    'Астана',
+  ];
+  final List<String> cities_kg = [
+    'Бишкек',
+    'Ош',
+  ];
+  final List<String> cities_uz = [
+    'Ташкент',
+    'Бухара',
+  ];
+
+  final List<String> cities = [
+    'Алматы',
+    'Астана',
+    'Бишкек',
+    'Ош',
+    'Ташкент',
+    'Бухара',
+  ];
   @override
   Widget build(BuildContext context) {
-    var percent = .15;
-    TextEditingController addressController = TextEditingController();
-    String? dropdownValue = 'Не выбрано';
-    String? selectedCountry;
-    final List<String> countries = [
-      'Казахстан',
-      'Кыргызстан',
-      'Узбекистан',
-    ];
 
-    final List<String> cities_kz = [
-      'Алматы',
-      'Астана',
-    ];
-    final List<String> cities_kg = [
-      'Бишкек',
-      'Ош',
-    ];
-    final List<String> cities_uz = [
-      'Ташкент',
-      'Бухара',
-    ];
-
-    final List<String> cities = [
-      'Алматы',
-      'Астана',
-      'Бишкек',
-      'Ош',
-      'Ташкент',
-      'Бухара',
-    ];
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -63,8 +64,8 @@ class _ORSOneState extends State<ORSOne> {
                         'Страна погрузки', countries, selectedCountry, cities),
                     SWidgets().dropDownList(
                         'Населенный пункт', cities, selectedCountry, []),
-                    SWidgets().inputField(
-                        'Точный адрес погрузки', addressController, ''),
+                    SWidgets().inputField(context,
+                        'Точный адрес погрузки', _addressController, 'Введите адрес погрузки', ''),
                     Divider(),
                   ],
                 ),
