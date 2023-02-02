@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return OKToast(
       child: GetMaterialApp(
-        initialRoute: '/navbar',
+        initialRoute: '/',
         getPages: Routes.route_list,
         debugShowCheckedModeBanner: false,
         home: const InitScreen(),
