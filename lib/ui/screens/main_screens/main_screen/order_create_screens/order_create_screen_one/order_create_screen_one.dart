@@ -70,7 +70,7 @@ class _ORSOneState extends State<ORSOne> {
                 ),
               ),
               Expanded(child: SizedBox()),
-              SWidgets().ubutton(context, 'orstwo', 'Продолжить', null),
+              SWidgets().navbarbutton(context, 'orstwo', 'Продолжить', null),
             ],
           ),
         ),

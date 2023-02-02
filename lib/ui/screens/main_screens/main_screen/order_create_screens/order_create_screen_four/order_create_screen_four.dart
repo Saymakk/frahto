@@ -106,7 +106,7 @@ class _ORSFourState extends State<ORSFour> {
                 ),
               ),
               Expanded(child: SizedBox()),
-              SWidgets().ubutton(context, 'orsfive', 'Продолжить', null),
+              SWidgets().navbarbutton(context, 'orsfive', 'Продолжить', null),
             ],
           ),
         ),

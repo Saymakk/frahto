@@ -89,7 +89,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ],
                 ),
                 Expanded(child: SizedBox()),
-                SWidgets().ubutton(context, 'sms', 'Продолжить', 'auth'),
+                SWidgets().navbarbutton(context, 'sms', 'Продолжить', 'auth'),
               ],
             ),
           ),

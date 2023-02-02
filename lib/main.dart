@@ -4,6 +4,7 @@ import 'package:frahto/ui/screens/init_screen/init_screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:oktoast/oktoast.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -17,11 +18,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialRoute: '/navbar',
-      getPages: Routes.route_list,
-      debugShowCheckedModeBanner: false,
-      home: const InitScreen(),
+    return OKToast(
+      child: GetMaterialApp(
+        initialRoute: '/navbar',
+        getPages: Routes.route_list,
+        debugShowCheckedModeBanner: false,
+        home: const InitScreen(),
+      ),
     );
   }
 }

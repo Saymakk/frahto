@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:frahto/constants/constants.dart';
 import 'package:frahto/ui/widgets/bottom_nav_bar.dart';
 import 'package:get/get.dart';
+import 'package:oktoast/oktoast.dart';
 
 class AppBars {
   AppBar abot(bool back, String title) {
@@ -120,9 +121,10 @@ class SWidgets {
     );
   }
 
-  Widget dropDownList(
-      String title, final List<String> items, String? selectedValue, final List addedList) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start,
+  Widget dropDownList(String title, final List<String> items,
+      String? selectedValue, final List addedList) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
@@ -137,9 +139,8 @@ class SWidgets {
           decoration: InputDecoration(
             isDense: true,
             contentPadding: EdgeInsets.zero,
-            border: OutlineInputBorder(borderSide: BorderSide(
-                width: 1,
-                color: Style.inactiveGreyBG),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(width: 1, color: Style.inactiveGreyBG),
               borderRadius: BorderRadius.circular(8),
             ),
           ),
@@ -193,8 +194,8 @@ class SWidgets {
     );
   }
 
-  FilledButton ubutton(BuildContext context, String where, String button_title,
-      dynamic arguments) {
+  FilledButton navbarbutton(BuildContext context, String where,
+      String button_title, dynamic arguments) {
     return FilledButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Style.mainPurple),
@@ -202,12 +203,16 @@ class SWidgets {
             Size(MediaQuery.of(context).size.width, 48)),
       ),
       onPressed: () {
+        /// args = 'navbar' => Главный экран
+        /// args = 'download' => Скачать файл
         arguments == 'navbar'
             ? Get.offAllNamed('/navbar')
             : Get.toNamed(
                 '/$where',
                 arguments: [arguments],
               );
+        arguments == 'download' ? showToast('Файл скачивается', position: ToastPosition(align: Alignment.bottomCenter))
+        : null;
       },
       child: Container(
         child: Text(

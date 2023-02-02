@@ -1,5 +1,6 @@
 import 'package:frahto/ui/screens/auth_screen/auth_screen.dart';
 import 'package:frahto/ui/screens/init_screen/init_screen.dart';
+import 'package:frahto/ui/screens/main_screens/main_screen/order_create_screens/status_screen/status_screen.dart';
 import 'package:frahto/ui/widgets/bottom_nav_bar.dart';
 import 'package:get/get.dart';
 
@@ -72,6 +73,10 @@ class Routes {
     GetPage(
         name: '/orseight',
         page: () => const ORSEight(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: '/status',
+        page: () => const StatusScreen(),
         transition: Transition.rightToLeft),
   ];
 }

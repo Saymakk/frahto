@@ -45,7 +45,7 @@ class InitScreen extends StatelessWidget {
                         ),
                       ),
                       SWidgets().sb(0, 32),
-                      SWidgets().ubutton(context, 'auth', 'Продолжить', null),
+                      SWidgets().navbarbutton(context, 'auth', 'Продолжить', null),
                     ],
                   ),
                 ),

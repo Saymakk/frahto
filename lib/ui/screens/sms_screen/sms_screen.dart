@@ -84,7 +84,7 @@ class _SMSScreenState extends State<SMSScreen> {
                       ),
                       Visibility(
                         visible: isActive,
-                        child: SWidgets().ubutton(
+                        child: SWidgets().navbarbutton(
                           context,
                           'navbar',
                           button_title,

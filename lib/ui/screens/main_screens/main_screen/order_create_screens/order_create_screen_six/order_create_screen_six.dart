@@ -37,12 +37,11 @@ class _ORSSixState extends State<ORSSix> {
                     SWidgets().ocreate(),
                     SWidgets().dropDownList(
                         'Тип транспорта', transportType, selectedTransportType, []),
-                    Divider(),
                   ],
                 ),
               ),
               Expanded(child: SizedBox()),
-              SWidgets().ubutton(context, 'orsseven', 'Продолжить', null),
+              SWidgets().navbarbutton(context, 'orsseven', 'Продолжить', null),
             ],
           ),
         ),

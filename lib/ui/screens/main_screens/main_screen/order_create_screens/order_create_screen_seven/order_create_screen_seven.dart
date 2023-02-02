@@ -82,7 +82,7 @@ class _ORSSevenState extends State<ORSSeven> {
                   ),
                 ),
                 SizedBox(height: 8,),
-                SWidgets().ubutton(context, 'orseight', 'Продолжить', null),
+                SWidgets().navbarbutton(context, 'orseight', 'Продолжить', null),
               ],
             ),
           ),

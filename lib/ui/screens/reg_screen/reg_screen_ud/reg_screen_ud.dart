@@ -71,7 +71,7 @@ class _RegUserDataState extends State<RegUserData> {
                   ],
                 ),
                 Expanded(child: SizedBox()),
-                SWidgets().ubutton(context, 'sms', 'Продолжить', null),
+                SWidgets().navbarbutton(context, 'sms', 'Продолжить', null),
                 SWidgets().sb(0, 16),
               ],
             ),

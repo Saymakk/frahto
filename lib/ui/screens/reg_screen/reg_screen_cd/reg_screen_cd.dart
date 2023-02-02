@@ -78,7 +78,7 @@ class _RegCompanyDataState extends State<RegCompanyData> {
                   ],
                 ),
                 Expanded(child: SizedBox()),
-                SWidgets().ubutton(context, 'regud', 'Продолжить', null),
+                SWidgets().navbarbutton(context, 'regud', 'Продолжить', null),
                 SWidgets().sb(0, 16),
               ],
             ),

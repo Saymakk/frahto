@@ -41,23 +41,19 @@ class Style {
     );
   }
 
-  InputDecoration textFieldDecoration(){
+  InputDecoration textFieldDecoration() {
     return InputDecoration(
-      hintStyle: Style().textStyle(
-          16, FontWeight.w400, Style.inactiveGreyBG),
+      hintStyle: Style().textStyle(16, FontWeight.w400, Style.inactiveGreyBG),
       border: OutlineInputBorder(
-        borderSide: BorderSide(
-            width: 1, color: Style.inactiveGreyBG),
+        borderSide: BorderSide(width: 1, color: Style.inactiveGreyBG),
         borderRadius: BorderRadius.circular(8.0),
       ),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-            width: 1, color: Style.inactiveGreyBG),
+        borderSide: BorderSide(width: 1, color: Style.inactiveGreyBG),
         borderRadius: BorderRadius.circular(8.0),
       ),
       disabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-            width: 1, color: Style.inactiveGreyBG),
+        borderSide: BorderSide(width: 1, color: Style.inactiveGreyBG),
         borderRadius: BorderRadius.circular(8.0),
       ),
       focusColor: Style.inactiveGreyBG,
@@ -70,6 +66,13 @@ class Style {
     );
   }
 
+  ButtonStyle buttonStyle(context, dynamic color) {
+    return ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(Style.inactiveGreyBG),
+      fixedSize: MaterialStateProperty.all(
+          Size(MediaQuery.of(context).size.width, 48)),
+    );
+  }
 }
 
 ///ASSETS

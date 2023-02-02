@@ -138,7 +138,7 @@ class _MainScreenState extends State<MainScreen> {
                     SizedBox(height: 24),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 90.0),
-                      child: SWidgets().ubutton(context, 'orsone', 'Создать заказ', null),
+                      child: SWidgets().navbarbutton(context, 'orsone', 'Создать заказ', null),
                     ),
 
                   ],

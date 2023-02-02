@@ -110,7 +110,7 @@ String time = 'Не выбрано';
                 ),
               ),
               Expanded(child: SizedBox()),
-              SWidgets().ubutton(context, 'orsthree', 'Продолжить', null),
+              SWidgets().navbarbutton(context, 'orsthree', 'Продолжить', null),
             ],
           ),
         ),

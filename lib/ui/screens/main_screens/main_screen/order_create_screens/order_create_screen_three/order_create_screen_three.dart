@@ -71,7 +71,7 @@ class _ORSThreeState extends State<ORSThree> {
                 ),
               ),
               Expanded(child: SizedBox()),
-              SWidgets().ubutton(context, 'orsfour', 'Продолжить', null),
+              SWidgets().navbarbutton(context, 'orsfour', 'Продолжить', null),
             ],
           ),
         ),

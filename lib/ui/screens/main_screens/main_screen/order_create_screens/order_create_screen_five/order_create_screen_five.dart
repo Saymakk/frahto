@@ -85,7 +85,7 @@ class _ORSFiveState extends State<ORSFive> {
                     .dropDownList('Вид погрузки', upt, uploadingType, []),
                 SWidgets()
                     .dropDownList('Условия погрузки', lc, loadingCond, []),
-                SWidgets().ubutton(context, 'orssix', 'Продолжить', null),
+                SWidgets().navbarbutton(context, 'orssix', 'Продолжить', null),
 
               ],
             ),
