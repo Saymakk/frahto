@@ -131,7 +131,9 @@ class SWidgets {
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-          color: Style.inactiveGreyBG, borderRadius: BorderRadius.circular(8)),
+        color: Color(0xfff4f6f7),
+        borderRadius: BorderRadius.circular(8),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -188,9 +190,7 @@ class SWidgets {
                         context: context,
                         builder: (BuildContext context) {
                           return PreferredSize(
-                              child: Container(
-
-                              ),
+                              child: Container(),
                               preferredSize: Size(double.infinity,
                                   MediaQuery.of(context).size.height * .9));
                         });
