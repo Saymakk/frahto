@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:frahto/constants/constants.dart';
 import 'package:frahto/ui/screens/main_screens/profile_screen/orders/current_orders_screen/current_orders_screen.dart';
 import 'package:frahto/ui/screens/main_screens/profile_screen/orders/orders_history_screen/orders_history_screen.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({Key? key}) : super(key: key);
@@ -50,6 +52,9 @@ class _OrdersScreenState extends State<OrdersScreen>
             ),
           ),
           bottom: TabBar(
+            labelStyle: Style().textStyle(16, FontWeight.w500, Style.mainPurple),
+            unselectedLabelStyle:
+            Style().textStyle(16, FontWeight.w500, Style.inactiveGreyBG),
             indicatorSize: TabBarIndicatorSize.tab,
             controller: tabController,
             tabs: [
