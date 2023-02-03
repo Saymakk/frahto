@@ -72,13 +72,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               'orders',
               'currentorder',
               'Текущие заказы',
-              'note',
+              '1',
             ),
             SWidgets().listTileWidget(
               'orders',
               'orderhistory',
               'История заказов',
-              'note',
+              '0',
             ),
             SWidgets().listTileWidget(
               'messages',

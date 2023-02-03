@@ -119,7 +119,7 @@ class SWidgets {
       String where, String icon_leading, String title, String note) {
     return ListTile(
       onTap: () {
-        Get.toNamed('/$where');
+        Get.toNamed('/$where', arguments: note);
       },
       leading: SvgPicture.asset(Assets.icn + '$icon_leading.svg'),
       title: Text(title),

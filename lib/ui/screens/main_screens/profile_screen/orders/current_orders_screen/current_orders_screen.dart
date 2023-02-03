@@ -10,6 +10,6 @@ class COScreen extends StatefulWidget {
 class _COScreenState extends State<COScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(body: Center(child: Text('ТЕКУЩИЕ ЗАКАЗЫ'),),);
   }
 }
