@@ -127,6 +127,102 @@ class SWidgets {
     );
   }
 
+  Widget orderExample(context, String from, String to, String order_id) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+          color: Style.inactiveGreyBG, borderRadius: BorderRadius.circular(8)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      from,
+                      style: Style().textStyle(
+                        14,
+                        FontWeight.w500,
+                        Style.mainBlack,
+                      ),
+                    ),
+                    Text(
+                      ' -> ',
+                      style: Style().textStyle(
+                        14,
+                        FontWeight.w500,
+                        Style.mainBlack,
+                      ),
+                    ),
+                    Text(
+                      to,
+                      style: Style().textStyle(
+                        14,
+                        FontWeight.w500,
+                        Style.mainBlack,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(child: SizedBox()),
+              Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: Style.mainPurple,
+                  borderRadius: BorderRadius.circular(48),
+                ),
+                child: TextButton(
+                  onPressed: () {
+                    showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return PreferredSize(
+                              child: Container(
+
+                              ),
+                              preferredSize: Size(double.infinity,
+                                  MediaQuery.of(context).size.height * .9));
+                        });
+                  },
+                  child: Text(
+                    'Подробнее',
+                    style: Style().textStyle(
+                      16,
+                      FontWeight.w500,
+                      Colors.white,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+          Container(
+            margin: EdgeInsets.only(bottom: 12, left: 16),
+            child: Text(
+              order_id,
+              style: Style().textStyle(
+                14,
+                FontWeight.w400,
+                Style.inactiveGreyText,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget ocreate() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
