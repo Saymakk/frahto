@@ -127,7 +127,26 @@ class SWidgets {
     );
   }
 
-  Widget orderExample(context, String from, String to, String order_id) {
+  Widget orderExample(
+      context,
+      String from,
+      String to,
+      String full_address_from,
+      String full_address_to,
+      String order_status,
+      String order_number,
+      String upload_type,
+      String upload_date,
+      String upload_time,
+      String price) {
+    dynamic status_color = order_status == 'Выполнен'
+        ? Color(0xff008557)
+        : (order_status == 'Подписание договора' ||
+                order_status == 'Подтверждение получения')
+            ? Color(0xffb26205)
+            : order_status == 'Поиск водителя'
+                ? Color(0xff7257ff)
+                : Color(0xff0056b8);
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -187,12 +206,188 @@ class SWidgets {
                 child: TextButton(
                   onPressed: () {
                     showModalBottomSheet<void>(
+                        isScrollControlled: true,
                         context: context,
                         builder: (BuildContext context) {
-                          return PreferredSize(
-                              child: Container(),
-                              preferredSize: Size(double.infinity,
-                                  MediaQuery.of(context).size.height * .9));
+                          return Container(
+                            width: double.infinity,
+                            height: MediaQuery.of(context).size.height * .95,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 8.0,
+                              ),
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            MediaQuery.of(context).size.width *
+                                                .35),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100)),
+                                      child: Divider(
+                                        thickness: 5,
+                                        color: Color(0xffe8ebeb),
+                                        // color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 26),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      IconButton(
+                                          onPressed: () => Get.back(),
+                                          icon: Icon(Icons.close)),
+                                      SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .15),
+                                      Expanded(
+                                        child: Text(
+                                          'Информация о заказе',
+                                          style: Style().textStyle(
+                                            18,
+                                            FontWeight.w500,
+                                            Style.mainBlack,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 15),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: double.infinity,
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 16,
+                                            vertical: 32,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xfff4f6f7),
+                                              borderRadius:
+                                                  BorderRadius.circular(16)),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Откуда',
+                                                style: Style().textStyle(
+                                                  24,
+                                                  FontWeight.w700,
+                                                  Style.mainBlack,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 12,
+                                              ),
+                                              Text(
+                                                full_address_from,
+                                                style: Style().textStyle(
+                                                  16,
+                                                  FontWeight.w500,
+                                                  Style.mainPurple,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 24,
+                                              ),
+                                              Text(
+                                                'Куда',
+                                                style: Style().textStyle(
+                                                  24,
+                                                  FontWeight.w700,
+                                                  Style.mainBlack,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 12,
+                                              ),
+                                              Text(
+                                                full_address_to,
+                                                style: Style().textStyle(
+                                                  16,
+                                                  FontWeight.w500,
+                                                  Style.mainPurple,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 45,
+                                        ),
+                                        Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'Статус заказа',
+                                                  style: Style().textStyle(
+                                                    18,
+                                                    FontWeight.w700,
+                                                    Style.mainBlack,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  order_status,
+                                                  style: Style().textStyle(
+                                                    16,
+                                                    FontWeight.w500,
+                                                    status_color,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(height: 21),
+                                            SWidgets().orderDetails(
+                                                'Номер заказа', order_number),
+                                            SWidgets().orderDetails(
+                                                'Тип погрузки', upload_type),
+                                            SWidgets().orderDetails(
+                                                'Дата погрузки', upload_date),
+                                            SWidgets().orderDetails(
+                                                'Время погрузки', upload_time),
+                                            SWidgets().orderDetails(
+                                                'Цена', '$price тенге'),
+                                            SizedBox(height: 45),
+                                            SWidgets().navbarbutton(context,
+                                                'map', 'Отследить заказ', null),
+                                            // SWidgets().inactiveubutton(
+                                            //     context, 'Техническая поддержка'),
+                                            // SizedBox(height: 16),
+                                            // SWidgets().navbarbutton(
+                                            //     context,
+                                            //     'рут для подписания договора',
+                                            //     'Подписать договор',
+                                            //     null),
+                                            //
+                                            // SWidgets().navbarbutton(
+                                            //     context,
+                                            //     'рут для Груз получен',
+                                            //     'Груз получен',
+                                            //     null),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
                         });
                   },
                   child: Text(
@@ -210,7 +405,7 @@ class SWidgets {
           Container(
             margin: EdgeInsets.only(bottom: 12, left: 16),
             child: Text(
-              order_id,
+              order_number,
               style: Style().textStyle(
                 14,
                 FontWeight.w400,
@@ -220,6 +415,35 @@ class SWidgets {
           )
         ],
       ),
+    );
+  }
+
+  Widget orderDetails(String title, String details) {
+    return Column(
+      children: [
+        SizedBox(height: 21),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: Style().textStyle(
+                16,
+                FontWeight.w400,
+                Color(0xff6e7375),
+              ),
+            ),
+            Text(
+              details,
+              style: Style().textStyle(
+                16,
+                FontWeight.w500,
+                Color(0xff131214),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 

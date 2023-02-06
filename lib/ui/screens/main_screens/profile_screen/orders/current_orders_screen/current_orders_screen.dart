@@ -18,7 +18,19 @@ class _COScreenState extends State<COScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SWidgets().orderExample(context, 'astana', 'almaty', 'asdasd')
+              SWidgets().orderExample(
+                context,
+                'from',
+                'to',
+                'full_address_from',
+                'full_address_to',
+                'order_status',
+                'order_number',
+                'upload_type',
+                'upload_date',
+                'upload_time',
+                'price',
+              )
               // Container(
               //   width: MediaQuery.of(context).size.width,
               //   decoration: BoxDecoration(
