@@ -6,8 +6,10 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 void main() async {
+  AndroidYandexMap.useAndroidViewSurface = false;
   await Hive.initFlutter();
   await Hive.openBox('db');
   runApp(const MyApp());
