@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           // fontFamily: 'inter',
           useMaterial3: true,
         ),
-        initialRoute: '/navbar',
+        initialRoute: '/',
         getPages: Routes.route_list,
         debugShowCheckedModeBanner: false,
         home: const InitScreen(),

@@ -18,9 +18,11 @@ class _RegCompanyDataState extends State<RegCompanyData> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
   String initialCountry = 'KZ';
   PhoneNumber number = PhoneNumber(isoCode: 'KZ');
+
+  bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,8 @@ class _RegCompanyDataState extends State<RegCompanyData> {
                   ),
                   maxLines: 5,
                 ),
-                SWidgets().inputField(context, 'БИН', _binController, '************', ''),
+                SWidgets().inputField(
+                    context, 'БИН', _binController, '************', ''),
                 SWidgets().inputField(context, 'Название компании',
                     _companyNameController, 'ТОО "Double.kz"', ''),
                 phone_field(),
@@ -78,7 +81,19 @@ class _RegCompanyDataState extends State<RegCompanyData> {
                   ],
                 ),
                 Expanded(child: SizedBox()),
-                SWidgets().navbarbutton(context, 'regud', 'Продолжить', null),
+                Visibility(
+                    visible: !isVisible,
+                    child: SWidgets().inactiveubutton(context, 'Продолжить')),
+                Visibility(
+                  visible: isVisible,
+                  child:
+                      SWidgets().navbarbutton(context, 'regud', 'Продолжить', {
+                    'status': 'reg_cd',
+                    'phone_number': phoneController.text,
+                    'bin': _binController.text,
+                    'company_name': _companyNameController.text
+                  }),
+                ),
                 SWidgets().sb(0, 16),
               ],
             ),
@@ -97,7 +112,18 @@ class _RegCompanyDataState extends State<RegCompanyData> {
           InternationalPhoneNumberInput(
             onInputChanged: (PhoneNumber number) {
               print(number.phoneNumber);
-              print(number.isoCode);
+
+              if (phoneController.text.length >= 11 &&
+                  _binController.text.length != null &&
+                  _companyNameController.text.length != null) {
+                setState(() {
+                  isVisible = true;
+                });
+              } else if (phoneController.text.length <= 11 ) {
+                setState(() {
+                  isVisible = false;
+                });
+              }
             },
             // onInputValidated: (bool value) {
             //   print(value);
@@ -109,7 +135,7 @@ class _RegCompanyDataState extends State<RegCompanyData> {
               leadingPadding: 16,
             ),
             initialValue: number,
-            textFieldController: controller,
+            textFieldController: phoneController,
             formatInput: true,
             hintText: 'Номер телефона',
             keyboardType: TextInputType.number,

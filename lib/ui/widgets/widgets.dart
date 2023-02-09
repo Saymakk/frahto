@@ -2,8 +2,10 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:frahto/constants/constants.dart';
+import 'package:frahto/data/api_repository/client_register.dart';
 import 'package:frahto/ui/widgets/bottom_nav_bar.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:oktoast/oktoast.dart';
 
 class AppBars {
@@ -554,19 +556,52 @@ class SWidgets {
         fixedSize: MaterialStateProperty.all(
             Size(MediaQuery.of(context).size.width, 48)),
       ),
-      onPressed: () {
+      onPressed: () async {
         /// args = 'navbar' => Главный экран
-        /// args = 'download' => Скачать файл
         arguments == 'navbar'
             ? Get.offAllNamed('/navbar')
             : Get.toNamed(
                 '/$where',
                 arguments: [arguments],
               );
+
+        where == 'sms' ? clientRegister() : print('Что-то пошло не так');
+
+        /// args = 'download' => Скачать файл
         arguments == 'download'
             ? showToast('Файл скачивается',
                 position: ToastPosition(align: Alignment.bottomCenter))
             : null;
+
+        /// args[status] = 'reg_cd' => регистрация аккаунта данные компании
+        if (arguments != null && arguments['status'] == 'reg_cd') {
+          await Hive.box('db').put(
+            'company_data',
+            {
+              'phone_number': arguments['phone_number'],
+              'bin': arguments['bin'],
+              'company_name': arguments['company_name']
+            },
+          );
+          print(arguments);
+          print(Hive.box('db').get('company_data'));
+
+          /// args[status] = 'reg_ud' => регистрация аккаунта ответственного лица
+        } else if (arguments != null && arguments['status'] == 'reg_ud') {
+          await Hive.box('db').put(
+            'user_data',
+            {
+              'phone_number': arguments['phone_number'],
+              'iin': arguments['iin'],
+              'name': arguments['name'],
+              'last_name': arguments['last_name']
+            },
+          );
+          print(arguments);
+          print(Hive.box('db').get('user_data'));
+        } else {
+          print('Рут не содержит определяющий статус');
+        }
       },
       child: Container(
         child: Text(

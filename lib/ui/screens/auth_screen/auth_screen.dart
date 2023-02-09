@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:frahto/data/api_repository/client_getOtp.dart';
+import 'package:frahto/data/api_repository/client_register.dart';
 import 'package:frahto/ui/widgets/widgets.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 import '../../../constants/constants.dart';
+import '../../../data/api_repository/client_auth.dart';
 import '../../widgets/phone_field.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -28,7 +32,7 @@ class _AuthScreenState extends State<AuthScreen> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           resizeToAvoidBottomInset: false,
-          appBar: AppBars().abot(true,'Авторизация'),
+          appBar: AppBars().abot(true, 'Авторизация'),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -77,7 +81,11 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {
+                      onPressed: () async {
+
+                        // clientRegister();
+                        // clientLogin();
+                        // clientGetOtp(controller.text);
                         Get.toNamed(
                           '/regcd',
                           arguments: ['reg'],

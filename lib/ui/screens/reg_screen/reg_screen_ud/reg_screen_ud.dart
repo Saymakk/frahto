@@ -21,15 +21,15 @@ class _RegUserDataState extends State<RegUserData> {
   TextEditingController _iinController = TextEditingController();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _lastnameController = TextEditingController();
+  bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-
         child: Scaffold(
-            resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: false,
           appBar: AppBars().abot(true, 'Регистрация'),
           body: Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 16, bottom: 16),
@@ -42,14 +42,17 @@ class _RegUserDataState extends State<RegUserData> {
                     Text(
                       'Данные контактного лица',
                       maxLines: 4,
-                      style:
-                          Style().textStyle(24, FontWeight.w700, Style.mainBlack),
+                      style: Style()
+                          .textStyle(24, FontWeight.w700, Style.mainBlack),
                     ),
                   ],
                 ),
-                SWidgets().inputField(context, 'ИИН', _iinController, '************', ''),
-                SWidgets().inputField(context, 'Имя', _nameController, 'Имя', ''),
-                SWidgets().inputField(context, 'Фамилия', _lastnameController, 'Фамилия', ''),
+                SWidgets().inputField(
+                    context, 'ИИН', _iinController, '************', ''),
+                SWidgets()
+                    .inputField(context, 'Имя', _nameController, 'Имя', ''),
+                SWidgets().inputField(
+                    context, 'Фамилия', _lastnameController, 'Фамилия', ''),
                 phone_field(),
                 Row(
                   children: [
@@ -71,7 +74,24 @@ class _RegUserDataState extends State<RegUserData> {
                   ],
                 ),
                 Expanded(child: SizedBox()),
-                SWidgets().navbarbutton(context, 'sms', 'Продолжить', null),
+                Visibility(
+                    visible: !isVisible,
+                    child: SWidgets().inactiveubutton(context, 'Продолжить')),
+                Visibility(
+                  visible: isVisible,
+                  child: SWidgets().navbarbutton(
+                    context,
+                    'sms',
+                    'Продолжить',
+                    {
+                      'status': 'reg_ud',
+                      'phone_number': controller.text,
+                      'iin': _iinController.text,
+                      'name': _nameController.text,
+                      'last_name': _lastnameController.text
+                    },
+                  ),
+                ),
                 SWidgets().sb(0, 16),
               ],
             ),
@@ -80,6 +100,7 @@ class _RegUserDataState extends State<RegUserData> {
       ),
     );
   }
+
   Widget phone_field() {
     return Form(
       key: formKey,
@@ -89,7 +110,17 @@ class _RegUserDataState extends State<RegUserData> {
           InternationalPhoneNumberInput(
             onInputChanged: (PhoneNumber number) {
               print(number.phoneNumber);
-              print(number.isoCode);
+              if (controller.text.length >= 11 &&
+                  _nameController.text.length != null &&
+                  _iinController.text.length != null) {
+                setState(() {
+                  isVisible = true;
+                });
+              } else if (controller.text.length <= 11) {
+                setState(() {
+                  isVisible = false;
+                });
+              }
             },
             // onInputValidated: (bool value) {
             //   print(value);
@@ -113,5 +144,4 @@ class _RegUserDataState extends State<RegUserData> {
       ),
     );
   }
-
 }
